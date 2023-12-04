@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { getFilterName } from 'redux/reducer/filterSplice';
+import { getFilterName } from 'redux/reducers/contacts/filterSplice';
 
 export default function FilterName() {
   const dispatch = useDispatch();

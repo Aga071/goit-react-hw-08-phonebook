@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import contactsReducer from './reducer/contactsSlice';
-import filterReducer from './reducer/filterSplice';
+import contactsReducer from './reducers/contacts/contactsSlice';
+import filterReducer from './reducers/contacts/filterSplice';
+import authReducer from './reducers/auth/authSlice';
 
 const store = configureStore({
   reducer: {
     contacts: contactsReducer,
     filter: filterReducer,
+    auth: authReducer,
   },
 });
 
