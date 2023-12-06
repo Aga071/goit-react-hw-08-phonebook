@@ -1,7 +1,17 @@
-export default function Loding() {
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from 'redux/reducers/auth/operations';
+export default function Loging() {
+  const dispacht = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispacht(login({ email, password }));
+  };
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           <input
             type="email"
@@ -9,16 +19,18 @@ export default function Loding() {
             pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
             placeholder="Your email"
             required
-            // value={email}
+            value={email}
+            onChange={e => setEmail(e.target.value)}
           />
         </label>
         <label>
           <input
             type="text"
-            name="pasword"
-            placeholder="Your pasword"
+            name="password"
+            placeholder="Your password"
             required
-            // value={pasword}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
         </label>
         <button type="submit">Loding</button>

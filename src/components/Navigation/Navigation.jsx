@@ -1,23 +1,41 @@
+import { useAuth } from 'hook/useAuth';
 import { Suspense } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
+import { logout } from 'redux/reducers/auth/operations';
+import { selectEmail } from 'redux/reducers/auth/selectors';
+
+const AuthenticatedNav = () => {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(logout());
+  };
+  const email = useSelector(selectEmail);
+  return (
+    <>
+      <NavLink to="contacts">Contacts</NavLink>
+      <div>
+        <p>{email}</p>
+        <button onClick={handleClick}>Logout</button>
+      </div>
+    </>
+  );
+};
+
+const UnauthenticatedNav = () => (
+  <>
+    <NavLink to="/register">Register</NavLink>
+    <NavLink to="/login">Login</NavLink>
+  </>
+);
 export default function Navigation() {
+  const { isLoggedIn } = useAuth();
   return (
     <div>
       <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/register">Register</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
-          <li>
-            <NavLink to="/contacts">Contacts</NavLink>
-          </li>
-        </ul>
+        <NavLink to="/">Home</NavLink>
+
+        {isLoggedIn ? <AuthenticatedNav /> : <UnauthenticatedNav />}
       </nav>
       <Suspense fallback={<p>Loading...</p>}>
         <Outlet />

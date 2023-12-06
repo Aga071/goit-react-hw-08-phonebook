@@ -8,19 +8,19 @@ export default function Register() {
   const dispatch = useDispatch();
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(e.target.value);
+    
     dispatch(
       register({
         name: username,
-        email,
-        password,
+        email: email,
+        password: password,
       })
     );
   };
   return (
     <div>
-      <form>
-        <label onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <label>
           <input
             type="text"
             name="username"
