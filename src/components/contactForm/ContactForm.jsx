@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/reducers/contacts/operations';
+import { FaPhoneAlt } from 'react-icons/fa';
+import { Input, Button, FormControl, FormLabel } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons';
+import { VscAccount } from 'react-icons/vsc';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -28,32 +32,47 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handlerSubmit}>
-      <label>
-        Name
-        <input
+    <FormControl
+      onSubmit={handlerSubmit}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      flexDirection="column"
+    >
+      <FormLabel display="flex" gap={2} alignItems="center">
+        <VscAccount size={30} />
+        <Input
+          width="auto"
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
+          placeholder={'Name'}
           value={name}
           onChange={handlerChange}
+          my={2}
         />
-      </label>
-      <label>
-        Number
-        <input
+      </FormLabel>
+      <FormLabel display="flex" gap={2} alignItems="center">
+        <FaPhoneAlt size={30} />
+        <Input
+          width="auto"
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
+          placeholder={'Number'}
           value={number}
           onChange={handlerChange}
+          my={2}
         />
-      </label>
-      <button type="submit">Add contact</button>
-    </form>
+      </FormLabel>
+      <Button type="submit" colorScheme="blue">
+        <AddIcon />
+        Add contact
+      </Button>
+    </FormControl>
   );
 }

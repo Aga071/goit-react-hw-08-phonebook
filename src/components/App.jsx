@@ -13,6 +13,8 @@ import Loging from './Login/Login';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import ProtectedRoute from './PrivateRoute/ProtectedRoute';
 import { me } from 'redux/reducers/auth/operations';
+import { Heading, Box } from '@chakra-ui/react';
+import Home from './Home/Home';
 
 const App = () => {
   const filter = useSelector(state => state.filter);
@@ -34,11 +36,13 @@ const App = () => {
     }, // eslint-disable-next-line
     []
   );
+
   if (error) return <p>{error}</p>;
   if (isLoading) return <p>Loading...</p>;
   return (
     <Routes>
       <Route path="/" element={<Navigation />}>
+        <Route index element={<Home />} />
         <Route
           path="/register"
           element={
@@ -54,15 +58,34 @@ const App = () => {
           element={
             <PrivateRoute
               element={
-                <div>
-                  <h1>Phonebook</h1>
-                  <div>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  flexDirection="column"
+                  gap={10}
+                  border="1px"
+                  borderColor="gray.200"
+                  mt={10}
+                  py={30}
+                  boxShadow="dark-lg"
+                  p="4"
+                  rounded="md"
+                  bg="white"
+                >
+                  <Heading>Phonebook</Heading>
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    flexDirection={'column'}
+                    gap={10}
+                    py={30}
+                  >
                     <ContactForm />
-                    <h2>Contacts</h2>
+                    <Heading>Contacts</Heading>
                     <FilterName />
                     <ContactList getFilterName={getFilterName} />
-                  </div>
-                </div>
+                  </Box>
+                </Box>
               }
               redirect="/login"
             />
