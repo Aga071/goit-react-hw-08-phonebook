@@ -29,13 +29,10 @@ const App = () => {
     );
   };
 
-  useEffect(
-    () => {
-      dispatch(me());
-      dispatch(fetchContacts());
-    }, // eslint-disable-next-line
-    []
-  );
+  useEffect(() => {
+    dispatch(me());
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   if (error) return <p>{error}</p>;
   if (isLoading) return <p>Loading...</p>;
