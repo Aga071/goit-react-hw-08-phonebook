@@ -4,7 +4,6 @@ import { selectUser } from 'redux/reducers/auth/selectors';
 
 export default function Home() {
   const user = useSelector(selectUser);
-  console.log(user);
   return (
     <Box
       display="flex"
