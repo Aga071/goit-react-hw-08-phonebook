@@ -21,6 +21,7 @@ const App = () => {
 
   const { contacts, isLoading, error } = useSelector(state => state.contacts);
 
+  const { isLoggedIn } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
   const getFilterName = () => {
@@ -31,7 +32,9 @@ const App = () => {
 
   useEffect(() => {
     dispatch(me());
-    dispatch(fetchContacts());
+    if (isLoggedIn) {
+      dispatch(fetchContacts());
+    }
   }, [dispatch]);
 
   if (error) return <p>{error}</p>;
