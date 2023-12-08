@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/reducers/contacts/operations';
 import { FaPhoneAlt } from 'react-icons/fa';
-import { Input, Button, FormControl, FormLabel } from '@chakra-ui/react';
+import { Input, Button, FormLabel } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { VscAccount } from 'react-icons/vsc';
 
@@ -32,10 +32,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form
-      onSubmit={handlerSubmit}
-      
-    >
+    <form onSubmit={handlerSubmit}>
       <FormLabel display="flex" gap={2} alignItems="center">
         <VscAccount size={30} />
         <Input
