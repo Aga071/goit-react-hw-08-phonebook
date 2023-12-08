@@ -32,12 +32,9 @@ export default function ContactForm() {
   };
 
   return (
-    <FormControl
+    <form
       onSubmit={handlerSubmit}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      flexDirection="column"
+      
     >
       <FormLabel display="flex" gap={2} alignItems="center">
         <VscAccount size={30} />
@@ -73,6 +70,6 @@ export default function ContactForm() {
         <AddIcon />
         Add contact
       </Button>
-    </FormControl>
+    </form>
   );
 }
