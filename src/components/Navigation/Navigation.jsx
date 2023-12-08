@@ -25,7 +25,10 @@ const AuthenticatedNav = () => {
   return (
     <>
       <BreadcrumbItem>
-        <BreadcrumbLink fontSize={22} href="contacts">
+        <BreadcrumbLink
+          fontSize={22}
+          href="/goit-react-hw-08-phonebook/contacts"
+        >
           Contacts
         </BreadcrumbLink>
       </BreadcrumbItem>
@@ -43,13 +46,13 @@ const AuthenticatedNav = () => {
 const UnauthenticatedNav = () => (
   <Breadcrumb>
     <BreadcrumbItem>
-      <BreadcrumbLink fontSize={22} href="/register">
+      <BreadcrumbLink fontSize={22} href="/goit-react-hw-08-phonebook/register">
         Register
       </BreadcrumbLink>
     </BreadcrumbItem>
 
     <BreadcrumbItem>
-      <BreadcrumbLink fontSize={22} href="/login">
+      <BreadcrumbLink fontSize={22} href="/goit-react-hw-08-phonebook/login">
         Login
       </BreadcrumbLink>
     </BreadcrumbItem>
@@ -57,6 +60,7 @@ const UnauthenticatedNav = () => (
 );
 export default function Navigation() {
   const { isLoggedIn } = useAuth();
+
   return (
     <Box m={15} ms={15}>
       <Box
@@ -73,7 +77,7 @@ export default function Navigation() {
       >
         <Breadcrumb>
           <BreadcrumbItem>
-            <BreadcrumbLink fontSize={22} href="/">
+            <BreadcrumbLink fontSize={22} href="/goit-react-hw-08-phonebook/">
               <IoHome />
             </BreadcrumbLink>
           </BreadcrumbItem>
