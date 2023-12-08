@@ -38,20 +38,28 @@ const App = () => {
   if (isLoading) return <p>Loading...</p>;
   return (
     <Routes>
-      <Route path="/" element={<Navigation />}>
+      <Route path="/goit-react-hw-08-phonebook/" element={<Navigation />}>
         <Route index element={<Home />} />
         <Route
-          path="/register"
+          path="/goit-react-hw-08-phonebook/register"
           element={
-            <ProtectedRoute element={<Register />} redirect="/contacts" />
+            <ProtectedRoute
+              element={<Register />}
+              redirect="/goit-react-hw-08-phonebook/contacts"
+            />
           }
         />
         <Route
-          path="/login"
-          element={<ProtectedRoute element={<Loging />} redirect="/contacts" />}
+          path="/goit-react-hw-08-phonebook/login"
+          element={
+            <ProtectedRoute
+              element={<Loging />}
+              redirect="/goit-react-hw-08-phonebook/contacts"
+            />
+          }
         />
         <Route
-          path="/contacts"
+          path="/goit-react-hw-08-phonebook/contacts"
           element={
             <PrivateRoute
               element={
@@ -84,7 +92,7 @@ const App = () => {
                   </Box>
                 </Box>
               }
-              redirect="/login"
+              redirect="/goit-react-hw-08-phonebook/login"
             />
           }
         />
