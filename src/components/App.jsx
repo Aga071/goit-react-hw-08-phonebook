@@ -35,7 +35,7 @@ const App = () => {
     if (isLoggedIn) {
       dispatch(fetchContacts());
     }
-  }, [dispatch]);
+  }, [dispatch, isLoggedIn]);
 
   if (error) return <p>{error}</p>;
   if (isLoading) return <p>Loading...</p>;
